@@ -1,0 +1,197 @@
+import React, { useState } from "react";
+
+const products = [
+  { id: 1, name: "Moisturizing Cream", category: "Skincare", price: 25, img: "https://via.placeholder.com/120" },
+  { id: 2, name: "Matte Lipstick", category: "Makeup", price: 15, img: "https://via.placeholder.com/120" },
+  { id: 3, name: "Mascara", category: "Makeup", price: 18, img: "https://via.placeholder.com/120" },
+  { id: 4, name: "Hydrating Serum", category: "Skincare", price: 35, img: "https://via.placeholder.com/120" },
+];
+
+const categories = ["All", "Skincare", "Makeup"];
+
+function App() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const filteredProducts =
+    selectedCategory === "All"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
+
+  return (
+    <div style={{ fontFamily: "sans-serif", background: "#ffe4ed", minHeight: "100vh", padding: "24px" }}>
+      <header style={{ marginBottom: "32px" }}>
+        <h1 style={{ color: "#d6336c", letterSpacing: 1 }}>Cosmetic Store</h1>
+        <nav>
+          <button style={navBtn} onClick={() => setSelectedCategory("All")}>
+            Home
+          </button>
+          <button style={navBtn}>Cart</button>
+          <button style={navBtn}>Profile</button>
+        </nav>
+      </header>
+      <section>
+        <h2>Shop by Category</h2>
+        <div style={{ marginBottom: "16px" }}>
+          {categories.map((cat) => (
+            <button
+              style={{
+                ...catBtn,
+                background: selectedCategory === cat ? "#d6336c" : "#fff",
+                color: selectedCategory === cat ? "#fff" : "#d6336c",
+              }}
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+        <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+          {filteredProducts.map((prod) => (
+            <div style={card} key={prod.id}>
+              <img src={prod.img} alt={prod.name} style={{ width: 120, borderRadius: 8 }} />
+              <h4>{prod.name}</h4>
+              <p>{prod.category}</p>
+              <strong>${prod.price}</strong>
+              <button style={{ ...catBtn, marginTop: 8, width: "100%" }}>Add to Cart</button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ marginTop: 40 }}>
+        <h2>Recommended For You</h2>
+        <p>Try our best-sellers based on your preferences.</p>
+        {/* ...Show more recommended cards here */}
+      </section>
+    </div>
+  );
+}
+
+const navBtn = {
+  background: "#ffd6e0",
+  color: "#d6336c",
+  border: "none",
+  marginRight: 12,
+  fontSize: 16,
+  padding: "8px 14px",
+  borderRadius: 8,
+  cursor: "pointer",
+};
+
+const catBtn = {
+  marginRight: 10,
+  padding: "6px 20px",
+  fontSize: 15,
+  border: "none",
+  borderRadius: 16,
+  cursor: "pointer",
+};
+
+const card = {
+  background: "#fff",
+  padding: 20,
+  borderRadius: 16,
+  minWidth: 180,
+  textAlign: "center",
+};
+
+export default App;import React, { useState } from "react";
+
+const products = [
+  { id: 1, name: "Moisturizing Cream", category: "Skincare", price: 25, img: "https://via.placeholder.com/120" },
+  { id: 2, name: "Matte Lipstick", category: "Makeup", price: 15, img: "https://via.placeholder.com/120" },
+  { id: 3, name: "Mascara", category: "Makeup", price: 18, img: "https://via.placeholder.com/120" },
+  { id: 4, name: "Hydrating Serum", category: "Skincare", price: 35, img: "https://via.placeholder.com/120" },
+];
+
+const categories = ["All", "Skincare", "Makeup"];
+
+function App() {
+  const [selectedCategory, setSelectedCategory] = useState("All");
+
+  const filteredProducts =
+    selectedCategory === "All"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
+
+  return (
+    <div style={{ fontFamily: "sans-serif", background: "#ffe4ed", minHeight: "100vh", padding: "24px" }}>
+      <header style={{ marginBottom: "32px" }}>
+        <h1 style={{ color: "#d6336c", letterSpacing: 1 }}>Cosmetic Store</h1>
+        <nav>
+          <button style={navBtn} onClick={() => setSelectedCategory("All")}>
+            Home
+          </button>
+          <button style={navBtn}>Cart</button>
+          <button style={navBtn}>Profile</button>
+        </nav>
+      </header>
+      <section>
+        <h2>Shop by Category</h2>
+        <div style={{ marginBottom: "16px" }}>
+          {categories.map((cat) => (
+            <button
+              style={{
+                ...catBtn,
+                background: selectedCategory === cat ? "#d6336c" : "#fff",
+                color: selectedCategory === cat ? "#fff" : "#d6336c",
+              }}
+              key={cat}
+              onClick={() => setSelectedCategory(cat)}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+        <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+          {filteredProducts.map((prod) => (
+            <div style={card} key={prod.id}>
+              <img src={prod.img} alt={prod.name} style={{ width: 120, borderRadius: 8 }} />
+              <h4>{prod.name}</h4>
+              <p>{prod.category}</p>
+              <strong>${prod.price}</strong>
+              <button style={{ ...catBtn, marginTop: 8, width: "100%" }}>Add to Cart</button>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section style={{ marginTop: 40 }}>
+        <h2>Recommended For You</h2>
+        <p>Try our best-sellers based on your preferences.</p>
+        {/* ...Show more recommended cards here */}
+      </section>
+    </div>
+  );
+}
+
+const navBtn = {
+  background: "#ffd6e0",
+  color: "#d6336c",
+  border: "none",
+  marginRight: 12,
+  fontSize: 16,
+  padding: "8px 14px",
+  borderRadius: 8,
+  cursor: "pointer",
+};
+
+const catBtn = {
+  marginRight: 10,
+  padding: "6px 20px",
+  fontSize: 15,
+  border: "none",
+  borderRadius: 16,
+  cursor: "pointer",
+};
+
+const card = {
+  background: "#fff",
+  padding: 20,
+  borderRadius: 16,
+  minWidth: 180,
+  textAlign: "center",
+};
+
+export default App;
